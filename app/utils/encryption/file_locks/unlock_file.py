@@ -1,27 +1,8 @@
 import os
 import shutil
-
-def get_all_files_in_directory(directory):
-    file_paths = []
-    for root, _, files in os.walk(directory):
-        for file in files:
-            file_paths.append(os.path.join(root, file))
-    return file_paths
-
-def lock_file(file_path):
-    hidden_dir = os.path.join(os.path.dirname(file_path), ".hidden")
-    if not os.path.exists(hidden_dir):
-        os.makedirs(hidden_dir)
-    base_name = os.path.basename(file_path)
-    new_path = os.path.join(hidden_dir, base_name)
-    shutil.move(file_path, new_path)
-    lock_info = f"{base_name} {new_path}"
-    lock_info_path = os.path.join(os.path.dirname(file_path), "lock_info.txt")
-    with open(lock_info_path, "a") as file:
-        file.write(lock_info + "\n")
+from tkinter import filedialog, messagebox
 
 def unlock_file(file_path):
-    from tkinter import filedialog, messagebox
     lock_info_path = filedialog.askopenfilename(title="Выберите файл с информацией о закрытых файлах")
     if not lock_info_path:
         messagebox.showerror("Ошибка", "Файл с информацией не выбран")
