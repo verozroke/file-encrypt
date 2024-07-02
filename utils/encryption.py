@@ -1,3 +1,4 @@
+# encryption.py
 import os
 import hashlib
 import base64
@@ -26,9 +27,6 @@ def save_rsa_key(key, path, is_private=False):
                 encryption_algorithm=serialization.NoEncryption()
             ))
         else:
-            if isinstance(key, bytes):
-                # Deserialize key if it's passed as bytes
-                key = serialization.load_pem_public_key(key)
             file.write(key.public_bytes(
                 encoding=serialization.Encoding.PEM,
                 format=serialization.PublicFormat.SubjectPublicKeyInfo
@@ -61,6 +59,14 @@ def decrypt_with_private_key(data, private_key):
             label=None
         )
     )
+
+def save_key(key, path):
+    with open(path, 'wb') as file:
+        file.write(key)
+
+def load_key(path):
+    with open(path, 'rb') as file:
+        return file.read()
 
 def encrypt_file(file_path, key):
     fernet = Fernet(key)
