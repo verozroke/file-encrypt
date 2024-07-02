@@ -13,7 +13,7 @@ from utils.encryption import (
 )
 from utils.file_operations import lock_file, unlock_file
 
-def handle_action(action, method, file_paths, security_level):
+def handle_action(action, file_paths, security_level):
     if action == "Зашифровать":
         if security_level == "Первая ступень":
             password = get_password()
