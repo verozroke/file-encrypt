@@ -26,6 +26,9 @@ def save_rsa_key(key, path, is_private=False):
                 encryption_algorithm=serialization.NoEncryption()
             ))
         else:
+            if isinstance(key, bytes):
+                # Deserialize key if it's passed as bytes
+                key = serialization.load_pem_public_key(key)
             file.write(key.public_bytes(
                 encoding=serialization.Encoding.PEM,
                 format=serialization.PublicFormat.SubjectPublicKeyInfo
