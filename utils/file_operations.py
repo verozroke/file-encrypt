@@ -1,7 +1,13 @@
-
 import os
 import shutil
-from tkinter import messagebox, filedialog
+from tkinter import filedialog, messagebox
+
+def get_all_files_in_directory(directory):
+    file_paths = []
+    for root, _, files in os.walk(directory):
+        for file in files:
+            file_paths.append(os.path.join(root, file))
+    return file_paths
 
 def lock_file(file_path):
     hidden_dir = os.path.join(os.path.dirname(file_path), ".hidden")
@@ -14,7 +20,6 @@ def lock_file(file_path):
     lock_info_path = os.path.join(os.path.dirname(file_path), "lock_info.txt")
     with open(lock_info_path, "a") as file:
         file.write(lock_info + "\n")
-    messagebox.showinfo("Успех", "Доступ к файлу закрыт")
 
 def unlock_file(file_path):
     lock_info_path = filedialog.askopenfilename(title="Выберите файл с информацией о закрытых файлах")
