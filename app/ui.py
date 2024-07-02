@@ -1,4 +1,4 @@
-from tkinter import Label, Button, StringVar, OptionMenu, filedialog, messagebox
+from tkinter import Label, Button, StringVar, OptionMenu, filedialog, messagebox, simpledialog
 import os
 from app.actions import handle_action
 from utils.file_operations import get_all_files_in_directory
@@ -13,6 +13,7 @@ class FileEncryptionApp:
 
         self.action_var = StringVar(root)
         self.method_var = StringVar(root)
+        self.security_var = StringVar(root)
 
         self.create_widgets()
 
@@ -32,6 +33,11 @@ class FileEncryptionApp:
         self.method_var.set("По ключу")
         methods = ["По ключу", "По секретному слову"]
         OptionMenu(self.root, self.method_var, *methods).pack()
+
+        Label(self.root, text="Выберите уровень безопасности:").pack(pady=10)
+        self.security_var.set("Первая ступень")
+        security_levels = ["Первая ступень", "Вторая ступень", "Третья ступень"]
+        OptionMenu(self.root, self.security_var, *security_levels).pack()
 
         Button(self.root, text="Начать", command=self.start_action).pack(pady=20)
 
@@ -53,4 +59,5 @@ class FileEncryptionApp:
 
         action = self.action_var.get()
         method = self.method_var.get()
-        handle_action(action, method, self.file_paths)
+        security_level = self.security_var.get()
+        handle_action(action, method, self.file_paths, security_level)
