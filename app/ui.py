@@ -1,7 +1,7 @@
 import os
 from tkinter import Tk, Label, Button, StringVar, OptionMenu, filedialog, messagebox
 from app.actions.handle_action import handle_action
-from utils.file_locks.get_all_files_in_directory import get_all_files_in_directory
+from utils.encryption.file_locks.get_all_files_in_directory import get_all_files_in_directory
 
 class FileEncryptionApp:
     def __init__(self, root):

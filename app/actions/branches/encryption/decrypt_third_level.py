@@ -1,8 +1,8 @@
 import os
 from tkinter import filedialog, messagebox
-from utils.key_management.load_key import load_key
-from utils.rsa.load_rsa_key import load_rsa_key
-from utils.rsa.decrypt_with_private_key import decrypt_with_private_key
+from utils.encryption.key_management.load_key import load_key
+from utils.encryption.rsa.load_rsa_key import load_rsa_key
+from utils.encryption.rsa.decrypt_with_private_key import decrypt_with_private_key
 from utils.encryption.decrypt_file import decrypt_file
 
 def execute(file_paths):

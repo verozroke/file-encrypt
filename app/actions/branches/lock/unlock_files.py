@@ -1,5 +1,5 @@
 from tkinter import messagebox
-from utils.file_locks.unlock_file import unlock_file
+from utils.encryption.file_locks.unlock_file import unlock_file
 
 def execute(file_paths):
     for file_path in file_paths:
