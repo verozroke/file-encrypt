@@ -1,6 +1,5 @@
 import os
 import shutil
-from tkinter import filedialog, messagebox
 
 def get_all_files_in_directory(directory):
     file_paths = []
@@ -22,6 +21,7 @@ def lock_file(file_path):
         file.write(lock_info + "\n")
 
 def unlock_file(file_path):
+    from tkinter import filedialog, messagebox
     lock_info_path = filedialog.askopenfilename(title="Выберите файл с информацией о закрытых файлах")
     if not lock_info_path:
         messagebox.showerror("Ошибка", "Файл с информацией не выбран")

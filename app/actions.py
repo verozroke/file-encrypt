@@ -1,20 +1,24 @@
-# actions.py
 import os
-from tkinter import filedialog, messagebox, simpledialog
-from utils.encryption import (
+from tkinter import filedialog, messagebox
+from utils.encryption.encryption import (
     generate_key,
     generate_key_from_password,
-    generate_rsa_key_pair,
+    encrypt_file,
+    decrypt_file
+)
+from utils.encryption.key_management import (
     save_key,
-    load_key,
+    load_key
+)
+from utils.encryption.rsa_encryption import (
+    generate_rsa_key_pair,
     save_rsa_key,
     load_rsa_key,
-    encrypt_file,
-    decrypt_file,
     encrypt_with_public_key,
     decrypt_with_private_key
 )
-from utils.file_operations import lock_file, unlock_file
+from utils.file_operations.file_locks import lock_file, unlock_file
+from shared.dialogs import get_password
 
 def handle_action(action, file_paths, security_level):
     if action == "Зашифровать":
@@ -88,6 +92,3 @@ def handle_action(action, file_paths, security_level):
         for file_path in file_paths:
             unlock_file(file_path)
         messagebox.showinfo("Успех", "Доступ к файлам открыт")
-
-def get_password():
-    return simpledialog.askstring("Пароль", "Введите секретное слово:", show='*')

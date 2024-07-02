@@ -1,17 +1,5 @@
-# encryption.py
-import os
-import hashlib
-import base64
-from cryptography.fernet import Fernet  # type: ignore
-from cryptography.hazmat.primitives.asymmetric import rsa, padding # type: ignore
+from cryptography.hazmat.primitives.asymmetric import rsa, padding  # type: ignore
 from cryptography.hazmat.primitives import serialization, hashes  # type: ignore
-
-def generate_key():
-    return Fernet.generate_key()
-
-def generate_key_from_password(password):
-    hash = hashlib.sha256(password.encode()).digest()
-    return base64.urlsafe_b64encode(hash[:32])
 
 def generate_rsa_key_pair():
     private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
@@ -59,27 +47,3 @@ def decrypt_with_private_key(data, private_key):
             label=None
         )
     )
-
-def save_key(key, path):
-    with open(path, 'wb') as file:
-        file.write(key)
-
-def load_key(path):
-    with open(path, 'rb') as file:
-        return file.read()
-
-def encrypt_file(file_path, key):
-    fernet = Fernet(key)
-    with open(file_path, 'rb') as file:
-        original = file.read()
-    encrypted = fernet.encrypt(original)
-    with open(file_path, 'wb') as file:
-        file.write(encrypted)
-
-def decrypt_file(file_path, key):
-    fernet = Fernet(key)
-    with open(file_path, 'rb') as file:
-        encrypted = file.read()
-    decrypted = fernet.decrypt(encrypted)
-    with open(file_path, 'wb') as file:
-        file.write(decrypted)
