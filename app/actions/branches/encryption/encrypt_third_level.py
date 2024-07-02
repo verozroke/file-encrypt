@@ -1,11 +1,11 @@
 import os
 from tkinter import filedialog, messagebox
-from utils.encryption.generate_key import generate_key
-from utils.encryption.encrypt_file import encrypt_file
-from utils.encryption.key_management.save_key import save_key
-from utils.encryption.rsa.generate_rsa_key_pair import generate_rsa_key_pair
-from utils.encryption.rsa.save_rsa_key import save_rsa_key
-from utils.encryption.rsa.encrypt_with_public_key import encrypt_with_public_key
+from app.utils.encryption.generate_key import generate_key
+from app.utils.encryption.encrypt_file import encrypt_file
+from app.utils.encryption.key_management.save_key import save_key
+from app.utils.encryption.rsa.generate_rsa_key_pair import generate_rsa_key_pair
+from app.utils.encryption.rsa.save_rsa_key import save_rsa_key
+from app.utils.encryption.rsa.encrypt_with_public_key import encrypt_with_public_key
 
 def execute(file_paths):
     private_key, public_key = generate_rsa_key_pair()

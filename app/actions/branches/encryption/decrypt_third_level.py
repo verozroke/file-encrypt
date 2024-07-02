@@ -1,9 +1,9 @@
 import os
 from tkinter import filedialog, messagebox
-from utils.encryption.key_management.load_key import load_key
-from utils.encryption.rsa.load_rsa_key import load_rsa_key
-from utils.encryption.rsa.decrypt_with_private_key import decrypt_with_private_key
-from utils.encryption.decrypt_file import decrypt_file
+from app.utils.encryption.key_management.load_key import load_key
+from app.utils.encryption.rsa.load_rsa_key import load_rsa_key
+from app.utils.encryption.rsa.decrypt_with_private_key import decrypt_with_private_key
+from app.utils.encryption.decrypt_file import decrypt_file
 
 def execute(file_paths):
     public_key_path = filedialog.askopenfilename(title="Выберите публичный ключ")

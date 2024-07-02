@@ -1,7 +1,7 @@
 import os
 from tkinter import filedialog, messagebox
-from utils.encryption.key_management.load_key import load_key
-from utils.encryption.decrypt_file import decrypt_file
+from app.utils.encryption.key_management.load_key import load_key
+from app.utils.encryption.decrypt_file import decrypt_file
 
 def execute(file_paths):
     key_file_path = filedialog.askopenfilename(title="Выберите файл с ключом")

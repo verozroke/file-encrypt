@@ -1,8 +1,8 @@
 import os
 from tkinter import messagebox
-from utils.encryption.generate_key import generate_key
-from utils.encryption.encrypt_file import encrypt_file
-from utils.encryption.key_management.save_key import save_key
+from app.utils.encryption.generate_key import generate_key
+from app.utils.encryption.encrypt_file import encrypt_file
+from app.utils.encryption.key_management.save_key import save_key
 
 def execute(file_paths):
     key = generate_key()

@@ -3,17 +3,17 @@ import importlib
 def handle_action(action, file_paths, security_level):
     action_map = {
         "Зашифровать": {
-            "Первая ступень": "app.actions.branches.encrypt_first_level",
-            "Вторая ступень": "app.actions.branches.encrypt_second_level",
-            "Третья ступень": "app.actions.branches.encrypt_third_level"
+            "Первая ступень": "app.actions.branches.encryption.encrypt_first_level",
+            "Вторая ступень": "app.actions.branches.encryption.encrypt_second_level",
+            "Третья ступень": "app.actions.branches.encryption.encrypt_third_level"
         },
         "Расшифровать": {
-            "Первая ступень": "app.actions.branches.decrypt_first_level",
-            "Вторая ступень": "app.actions.branches.decrypt_second_level",
-            "Третья ступень": "app.actions.branches.decrypt_third_level"
+            "Первая ступень": "app.actions.branches.encryption.decrypt_first_level",
+            "Вторая ступень": "app.actions.branches.encryption.decrypt_second_level",
+            "Третья ступень": "app.actions.branches.encryption.decrypt_third_level"
         },
-        "Закрыть доступ": "app.actions.lock.lock_files",
-        "Открыть доступ": "app.actions.lock.unlock_files"
+        "Закрыть доступ": "app.actions.branches.lock.lock_files",
+        "Открыть доступ": "app.actions.branches.lock.unlock_files"
     }
     
     if action in ["Зашифровать", "Расшифровать"]:
