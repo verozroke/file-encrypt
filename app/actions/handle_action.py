@@ -1,6 +1,6 @@
 import importlib
 
-def handle_action(action, file_paths, security_level, username):
+def handle_action(action, file_paths, security_level, username=None):
     action_map = {
         "Зашифровать": {
             "Первая ступень": "app.actions.branches.encryption.encrypt_first_level",
@@ -24,4 +24,7 @@ def handle_action(action, file_paths, security_level, username):
         module_name = action_map[action]
     
     module = importlib.import_module(module_name)
-    module.execute(file_paths, username)
+    if username:
+        module.execute(file_paths, username)
+    else:
+        module.execute(file_paths)

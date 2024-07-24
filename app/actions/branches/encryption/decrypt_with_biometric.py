@@ -1,8 +1,12 @@
-from utils.biometric.recognize_face import recognize_face
-from utils.encryption import decrypt_file
-from utils.encryption.key_management.load_key import load_key
-from utils.metadata.store_metadata import load_metadata
-import os 
+from app.utils.biometric.recognize_face import recognize_face
+from app.utils.encryption.decrypt_file import decrypt_file
+from app.utils.encryption.key_management.load_key import load_key
+from app.utils.metadata.store_metadata import load_metadata
+import os
+
+def execute(file_paths, username):
+    for file_path in file_paths:
+        decrypt_with_biometric(file_path, username)
 
 def decrypt_with_biometric(file_path, username):
     metadata = load_metadata(file_path)
