@@ -30,7 +30,7 @@ class FileEncryptionApp:
 
         Label(self.root, text="Выберите уровень безопасности:").pack(pady=10)
         self.security_var.set("Первая ступень")
-        security_levels = ["Первая ступень", "Вторая ступень", "Третья ступень"]
+        security_levels = ["Первая ступень", "Вторая ступень", "Третья ступень", "Биометрия"]
         OptionMenu(self.root, self.security_var, *security_levels).pack()
 
         Button(self.root, text="Начать", command=self.start_action).pack(pady=20)
